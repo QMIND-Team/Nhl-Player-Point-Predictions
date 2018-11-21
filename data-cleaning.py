@@ -56,7 +56,14 @@ def normalize(dataframe, attributes, 'min-max, z-score, etc', ):
 
 #Ian
 def detect_outliers(dataframe):
-    return 0
+    outliers = []
+    for col in dataframe.iteritems():
+        cut_off = dataframe.col.std() * 2
+        lower, upper = dataframe.mean - cut_off, dataframe.mean + cut_off
+        for x in dataframe.col.iterrows():
+            if x >= upper or x <= lower:
+                outliers.append(x)
+    return outliers
 
 #Ian
 def remove_outliers():
