@@ -4,4 +4,6 @@ The QMIND hockey analytics warm-up project, focusing on predicting players point
 
 Team members: Adam Wilkinson, Andrew Sergejewich, Hayden Wang, Ian Ho, Willem Atack edited
 
-Adam
+fskjdfafjdsbhsdgjk d
+dsfkjhsdflkjbnsd
+dfjkvnldfgdvf
