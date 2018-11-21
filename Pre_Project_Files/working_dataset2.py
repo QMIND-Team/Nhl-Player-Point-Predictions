@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import glob
 import os
-path = '4_year_stints'
+path = 'Pre_Project_Data/4_year_stints'
 
 #get path for all csv files within folder designated above.
 all_files = glob.glob(os.path.join(path, "*.csv"))     # advisable to use os.path.join as this makes concatenation OS independent

@@ -17,7 +17,7 @@ def get_data():
 
     # get path for all csv files within folder designated above.
     all_files = glob.glob(
-        os.path.join(path, "*.csv"))  # advisable to use os.path.join as this makes concatenation OS independent
+        os.path.join(path, "*.csv"))
 
     df_from_each_file = (pd.read_csv(f) for f in all_files)
 
@@ -75,7 +75,8 @@ def query_data(seasons, attributes, atleast_x_amount):
 
     return 0
 
-def remove_row_by_col_value(attribute, value):
+
+def remove_row_by_col_value(attribute, value, "string: greater, equal, less than"):
 
     return 0 #new_df
 
