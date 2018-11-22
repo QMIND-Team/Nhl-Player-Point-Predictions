@@ -8,14 +8,16 @@ from numpy.random import seed
 # if they are, then they get added to an outliers array which gets returned
 def detect_outliers(df):
     outliers = []
-    vals = df.values
-    for x in range(len(vals)):
-        cut_off = df.std() * 2  # cut off is 2 standard deviations away from the mean
-        lower = df.mean - cut_off
-        upper = df.mean + cut_off
-        for y in range(len(vals[x])):
-            if y >= upper or y <= lower: # if below or above 2 stds from mean, add to outliers array
-                outliers.append(y)
+    for column in df:
+        df[column]
+        cut_off = df[column].std()
+        lower = df[column].mean() - cut_off
+        upper = df[column].mean() + cut_off
+        row_count = 0
+        for row in df[column]:
+            if row >= upper or row <= lower: # if below or above 2 stds from mean, add to outliers array
+                outliers.append((column, row_count))
+            row_count += 1
     return outliers
 
 seed(1)
