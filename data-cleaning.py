@@ -79,3 +79,28 @@ def detect_outliers(dataframe):
 #Ian
 def remove_outliers():
     return 0
+
+def get_col_with_no_nan(df, col_type):
+    '''
+    df - dataset to be checked
+    col_type - num: columns containing only numerical data
+               no_num: columns not containing numerical data
+               any: all columns
+    '''
+
+    if col_type == 'num':
+        predictors = df.select_dtypes(exclude=['object'])
+    elif col_type == 'no_num':
+        predictors = df.select_dtypes(include=['object'])
+    elif col_type == 'any':
+        predictors = df
+    else:
+        print('Please input a correct col_type value (num, no_num, any)')
+        return 0
+
+    col_with_no_nan = []
+    for col in predictors.columns:
+        if not df[col].isnull().any():
+            col_with_no_nan.append(col)
+
+    return col_with_no_nan

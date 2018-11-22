@@ -5,4 +5,18 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-def
+# For each graphing function, it should take in a df as the independent variable and have the option of graphing
+# a new graph for each var or graphing them all on the same graph.
+
+# can show correlations in data
+def scatter_plot(X_var, Y_var, x_label, y_label, title):
+    return 0
+
+# distribution function
+def histogram(X_var, Y_var, x_label, y_label, title):
+    return 0
+
+# good to visualize the rnage of an attribute
+def boxplot(X_var, Y_var, x_label, y_label, title):
+    return 0
+
