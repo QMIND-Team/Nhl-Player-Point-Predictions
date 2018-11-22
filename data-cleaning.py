@@ -2,7 +2,7 @@
 # Functions include checking for null checks, removing/filling nulls, normalization, etc.
 
 import pandas as pd
-import numpy as n
+import numpy as np
 
 
 
