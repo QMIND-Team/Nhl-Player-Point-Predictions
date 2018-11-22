@@ -73,12 +73,25 @@ def normalize(dataframe, attributes, 'min-max, z-score, etc', ):
     return 0 #new_df
 
 #Ian
-def detect_outliers(dataframe):
-    return 0
+def detect_outliers(df):
+    outliers = []
+    for column in df:
+        cut_off = df[column].std() * 2
+        lower = df[column].mean() - cut_off
+        upper = df[column].mean() + cut_off
+        row_count = 0
+        for x in df[column]:
+            if x >= upper or x <= lower:  # if below or above 2 stds from mean, add to outliers array
+                outliers.append(row_count)  # adds row to outliers array
+            row_count += 1
+    outliers = list(set(outliers))  # removes duplicate rows
+    return outliers
 
 #Ian
 def remove_outliers():
-    return 0
+    outliers = detect_outliers(df)
+    df = df.drop(index=outliers)
+    return df
 
 def get_col_with_no_nan(df, col_type):
     '''
