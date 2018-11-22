@@ -13,7 +13,7 @@ import os
 #
 # Need to add attribute labels
 def get_data():
-    path = 'Pre_Project_Files/4_year_stints'
+    path = 'Pre_Project_Files/4_year_stints/'
 
     # get path for all csv files within folder designated above.
     all_files = glob.glob(
@@ -76,7 +76,6 @@ def query_data(seasons, attributes, atleast_x_amount):
     return 0
 
 
-def remove_row_by_col_value(attribute, value, "string: greater, equal, less than"):
+def remove_row_by_col_value(attribute, value, operator= "string: greater, equal, less than"):
 
     return 0 #new_df
-
