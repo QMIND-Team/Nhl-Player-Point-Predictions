@@ -2,7 +2,7 @@
 # Functions include checking for null checks, removing/filling nulls, normalization, etc.
 
 import pandas as pd
-import numpy as n
+import numpy as np
 
 
 
@@ -47,7 +47,7 @@ def fill_col_with_mean(dataframe, colName):
     dataframe[colName].fillna((dataframe[colName].mean()), inplace=True)
     return dataframe
 
-# Fill all null values with median of respective columns
+# Fill all null values with medians of respective columns
 #hayden
 def fill_all_median(dataframe):
     return dataframe.fillna(dataframe.median())
@@ -69,8 +69,8 @@ def find_mean_of_col(dataframe, colName):
 
 # Normalize given attributes (range() function is good)
 #Andrew
-def normalize(dataframe, attributes, 'min-max, z-score, etc', ):
-    return 0 #new_df
+#def normalize(dataframe, attributes, 'min-max, z-score, etc', ):
+#    return 0 #new_df
 
 #Ian
 def detect_outliers(dataframe):
@@ -79,3 +79,19 @@ def detect_outliers(dataframe):
 #Ian
 def remove_outliers():
     return 0
+
+def main():
+    #dataframe = pd.read_csv("train.csv")
+    df = [['Alex', 0, None], ['Bob', 0, 12], ['Clarke', None, 13], ['Julia', 1, 14], ['Steven', 0, 1000], ['George', 0, 100]]
+    dataframe = pd.DataFrame(df, columns=['Name', 'Gender', 'Age'], dtype=float)
+    dataframe2 = pd.DataFrame(df, columns=['Name', 'Gender', 'Age'], dtype=float)
+    count_column_nulls(dataframe)
+    count_row_nulls(dataframe)
+    print(fill_col_with_median(dataframe, 'Age').head())
+    print(fill_col_with_mean(dataframe2, 'Age').head())
+    print(fill_all_median(dataframe))
+    print(fill_all_mean(dataframe2))
+    print("Median of Gender is: ",find_median_of_col(dataframe,'Gender'))
+    print("Mean of Age is: ", find_mean_of_col(dataframe2, 'Age'))
+
+main()
