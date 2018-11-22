@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import glob
 import os
-path = 'Pre_Project_Data/4_year_stints'
+path = '4_year_stints/'
 
 #get path for all csv files within folder designated above.
 all_files = glob.glob(os.path.join(path, "*.csv"))     # advisable to use os.path.join as this makes concatenation OS independent
@@ -13,7 +13,6 @@ df_from_each_file = (pd.read_csv(f) for f in all_files)
 count = 0
 edited_df_from_each_file = []
 edited_new_df_from_each_file = []
-
 
 for df in df_from_each_file:
     # Groups by player name and counts the frequency.
@@ -55,4 +54,6 @@ for i in range(len(concatenated_new_df)):
     list2.append((concatenated_df.loc[4*int(i) + 3, 'P']))
 
 expanded_df['Target'] = list2
+
+print(expanded_df.shape)
 
