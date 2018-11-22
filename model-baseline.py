@@ -41,3 +41,11 @@ def DNN(df, activation, loss, input_layer=128, hidden_layers=256, kernel_initial
     # NN_model.summary()
     return NN_model
 
+def get_accuracy(NN_model, test, target):
+    prediction = NN_model.predict(test)
+    mse = 0
+    for i in range(len(target)):
+        mse += ((target.loc[i] - prediction[i]) ** 2)
+
+    mse = mse / len(target)
+    return 100 - mse.Target * 100
