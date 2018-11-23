@@ -3,8 +3,10 @@
 
 import pandas as pd
 import numpy as np
-
-
+from scipy.stats import zscore
+from sklearn.preprocessing import minmax_scale
+from sklearn.preprocessing import power_transform
+from sklearn.preprocessing import quantile_transform
 
 # Takes in dataframe, calls functions and cleans data based on parameters
 #Adam
@@ -69,8 +71,43 @@ def find_mean_of_col(dataframe, colName):
 
 # Normalize given attributes (range() function is good)
 #Andrew
-def normalize(dataframe, attributes, 'min-max, z-score, etc', ):
-    return 0 #new_df
+def normalize(dataframe, type):
+    global normalized_data
+    if type == zscore:
+        clean_data = dataframe.select_dtypes(['number'])
+        cleaner_data = clean_data.dropna(how='any')
+        normalized_data = cleaner_data.apply(zscore)
+    elif type == minmax:
+        clean_data = dataframe.select_dtypes(['number'])
+        cleaner_data = clean_data.dropna(how='any')
+        minmax_data = minmax_scale(cleaner_data)
+        normalized_data = pd.DataFrame(minmax_data)
+    elif type == l1_norm:
+        clean_data = dataframe.select_dtypes(['number'])
+        cleaner_data = clean_data.dropna(how='any')
+        norm_data = normalize(cleaner_data, norm='l1')
+        normalized_data = pd.DataFrame(norm_data)
+    elif type == l2_norm:
+        clean_data = dataframe.select_dtypes(['number'])
+        cleaner_data = clean_data.dropna(how='any')
+        norm_data = normalize(cleaner_data, norm='l2')
+        normalized_data = pd.DataFrame(norm_data)
+    elif type == power_yeo:
+        clean_data = dataframe.select_dtypes(['number'])
+        cleaner_data = clean_data.dropna(how='any')
+        power_data = power_transform(cleaner_data, method='yeo-johnson')
+        normalized_data = pd.DataFrame(power_data)
+    elif type == power_box:
+        clean_data = dataframe.select_dtypes(['number'])
+        cleaner_data = clean_data.dropna(how='any')
+        power_data = power_transform(cleaner_data, method='box-cox')
+        normalized_data = pd.DataFrame(power_data)
+    elif type == quantile:
+        clean_data = dataframe.select_dtypes(['number'])
+        cleaner_data = clean_data.dropna(how='any')
+        quantile_data = quantile_transform(cleaner_data)
+        normalized_data = pd.DataFrame(quantile_data)
+    return normalized_data
 
 #Ian
 def detect_outliers(df):
