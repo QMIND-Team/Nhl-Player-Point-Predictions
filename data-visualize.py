@@ -13,10 +13,11 @@ def scatter_plot(X_var, Y_var, x_label, y_label, title):
     return 0
 
 # distribution function
-def histogram(X_var, Y_var, x_label, y_label, title):
-    return 0
+def histogram(column):
+    plt.hist(column)
 
-# good to visualize the rnage of an attribute
-def boxplot(X_var, Y_var, x_label, y_label, title):
-    return 0
+# good to visualize the range of an attribute
+def boxplot(column):
+    plt.boxplot(column)
+
 
