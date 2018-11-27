@@ -21,3 +21,4 @@ def boxplot(column):
     plt.boxplot(column)
 
 
+
