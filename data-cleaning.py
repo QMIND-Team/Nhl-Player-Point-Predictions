@@ -13,15 +13,17 @@ from sklearn.preprocessing import quantile_transform
 def cleaning(dataframe, nullThreshRow, nullThreshCol):
    return 0 #cleaned_df
 
-# Remove rows in the data frame with nulls above the threshold
-#Willem
-def remove_null_thresh_rows(dataframe, nullThreshRow):
-    return 0 #new_df
+# Willem
+# Remove columns in the data frame with non-nulls below the threshold (i.e columns returned have at least the threshho#Willem
+def remove_null_thresh_rows(df, nullThreshRow):
+    new_df = df.dropna(thresh = nullThreshRow)
+    return new_df
 
-# Remove columns in the data frame with nulls above the threshold
-#Willem
-def remove_null_thresh_columns(dataframe, nullThreshCol):
-    return  0 #new_df
+# Willem
+# Remove columns in the data frame with non-nulls below the threshold (i.e columns returned have at least the threshho#Willem
+def remove_null_thresh_columns(df, nullThreshCol):
+    new_df = df.dropna(axis=1, thresh=nullThreshCol)
+    return new_df
 
 # Count number of nulls in each row
 #Hayden
