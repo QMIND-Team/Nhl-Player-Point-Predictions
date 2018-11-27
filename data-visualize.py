@@ -9,8 +9,13 @@ import matplotlib.pyplot as plt
 # a new graph for each var or graphing them all on the same graph.
 
 # can show correlations in data
-def scatter_plot(X_var, Y_var, x_label, y_label, title):
-    return 0
+def scatter_plot(X_var, Y_var, colour, x_label, y_label, title):
+    plt.scatter(Y_var, X_var, c=colour, marker='.')
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.title(title)
+    plt.show()
+    return
 
 # distribution function
 def histogram(X_var, Y_var, x_label, y_label, title):
