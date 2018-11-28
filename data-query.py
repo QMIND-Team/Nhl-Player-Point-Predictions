@@ -71,11 +71,15 @@ def get_data():
 
 # This function should take in parameters and create a dataframe with the requested data.
 # Ideally we could filter the data for specific stats. (atleast 30 season points, 75 games played)
-def query_data(seasons, attributes, atleast_x_amount):
+def query_data(dataset, season, year, attribute_1, value_1, attribute_2, value_2):
+    newdata = dataset.loc[(dataset[season] == year) & (data[attribute_1] >= value_1) & (data[attribute_2] >= value_2)]
+    return newdata
 
-    return 0
-
-
-def remove_row_by_col_value(attribute, value, operator= "string: greater, equal, less than"):
-
-    return 0 #new_df
+def remove_row_by_col_value(dataframe, column, operator, value):
+    if operator == 'greater':
+        new_data = dataframe.loc[dataframe[column] >= value]
+    elif operator == 'less':
+        new_data = dataframe.loc[dataframe[column] <= value]
+    elif operator == 'equal':
+        new_data = dataframe.loc[dataframe[column] == value]
+    return new_data
